@@ -12,34 +12,14 @@
                     {{ __('List Data User') }}
                     @include('message')
 
-                    <!-- Button to open the modal -->
-                    <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'add-new-user')"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 float-right">
-                        + Add New User
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="block float-end text-white mb-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        + Create
                     </button>
 
                     <!-- Updated Table with Tailwind CSS -->
                     <div class="overflow-x-auto min-w-full bg-white shadow-md sm:rounded-lg">
-                        {{-- <table class="min-w-full bg-white dark:bg-gray-700 text-left text-sm text-gray-500 dark:text-gray-300">
-                            <thead class="bg-gray-100 dark:bg-gray-600">
-                                <tr>
-                                    <th class="py-3 px-4 text-gray-700 dark:text-gray-300">ID</th>
-                                    <th class="py-3 px-4 text-gray-700 dark:text-gray-300">Name</th>
-                                    <th class="py-3 px-4 text-gray-700 dark:text-gray-300">Email</th>
-                                    <th class="py-3 px-4 text-gray-700 dark:text-gray-300">Created At</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                    <tr class="border-t dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="py-3 px-4 text-gray-700 dark:text-gray-300">{{ $user->id }}</td>
-                                        <td class="py-3 px-4 text-gray-700 dark:text-gray-300">{{ $user->name }}</td>
-                                        <td class="py-3 px-4 text-gray-700 dark:text-gray-300">{{ $user->email }}</td>
-                                        <td class="py-3 px-4 text-gray-700 dark:text-gray-300">{{ $user->created_at->format('Y-m-d H:i:s') }}</td> <!-- Date format -->
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table> --}}
                         <table class="table-default">
                             <thead>
                                 <tr class="table-header">
@@ -60,6 +40,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <!-- Pagination -->
+                        <div class="flex justify-end mt-3 mb-4">
+                            {{$users->links()}}
+                            {{-- <x-pagination.simple :current="$currentPage" :last="$lastPage" /> --}}
+                        </div>
+    
                     </div>
                 </div>
             </div>
@@ -67,4 +53,13 @@
     </div>
 
     @include('modal')
+    <script>
+        function openModal() {
+            document.getElementById('addUserModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('addUserModal').style.display = 'none';
+        }
+    </script>
 </x-app-layout>
