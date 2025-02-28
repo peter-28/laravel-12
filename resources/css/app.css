@@ -14,3 +14,20 @@
 .dark .text-gray-800 {
     color: #e2e8f0;
 }
+
+/* resources/css/app.css */
+.table-default {
+    @apply min-w-full bg-white dark:bg-gray-700 text-left text-sm text-gray-500 dark:text-gray-300;
+}
+
+.table-header {
+    @apply text-sm font-semibold bg-gray-100 dark:bg-gray-600 bg-table-header border-b border-table-border;
+}
+
+.table-cell {
+    @apply py-3 px-4 text-gray-700 dark:text-gray-300;
+}
+
+.table-row:hover {
+    @apply bg-gray-100 dark:bg-gray-800; /* Highlight row on hover */
+}
