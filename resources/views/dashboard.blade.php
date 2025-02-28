@@ -1,10 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('header')
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        {{ __('Dashboard') }}
+    </h2>
+@endsection
 
+@section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -42,17 +43,20 @@
                         </table>
                         <!-- Pagination -->
                         <div class="flex justify-end mt-3 mb-4">
-                            {{$users->links()}}
+                            {{ $users->links() }}
                             {{-- <x-pagination.simple :current="$currentPage" :last="$lastPage" /> --}}
                         </div>
-    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+@endsection
+@section('modal')
     @include('modal')
+@endsection
+@push('page-scripts')
     <script>
         function openModal() {
             document.getElementById('addUserModal').style.display = 'flex';
@@ -62,4 +66,4 @@
             document.getElementById('addUserModal').style.display = 'none';
         }
     </script>
-</x-app-layout>
+@endpush
