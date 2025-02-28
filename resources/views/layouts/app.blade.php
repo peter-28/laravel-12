@@ -33,6 +33,7 @@
             {{ $slot }}
         </main>
     </div>
+
     <script>
         function toggleTheme() {
             const htmlElement = document.documentElement;

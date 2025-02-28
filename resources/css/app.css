@@ -14,11 +14,3 @@
 .dark .text-gray-800 {
     color: #e2e8f0;
 }
-
-.flex-col {
-    flex-direction: column;
-}
-
-.flex-col .nav-link {
-    margin-bottom: 0.5rem; /* Sesuaikan margin sesuai kebutuhan */
-}
